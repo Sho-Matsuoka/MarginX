@@ -105,10 +105,11 @@ void critical_margin_method(vector<ele_unit> &element,  vector<vector<judge>> &j
             element[cri_num].value = element[cri_num].MAX;
         }        
         synchro_opt(element, cri_num);
-        Margin(element, jud, data_cir, arg_arr, 2);
+        Margin_low(element, jud, data_cir, arg_arr, 2);
 
     }
     cout << " Critical Margin Method is over!" << endl; 
+    Margin_low(element, jud, data_cir, arg_arr, 0);
 
 }
 

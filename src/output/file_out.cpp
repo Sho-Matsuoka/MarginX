@@ -18,10 +18,12 @@ using namespace std;
 
 
 void file_out(string &filename, vector<ele_unit> &element) {
-    stringstream txtfilename, out_csv, out_det;
+    stringstream txtfilename, csvfilename, out_csv, out_det;
     txtfilename << "result_" << filename << ".txt";
-    ofstream fpcsv("result.csv");
+    csvfilename << "result_" << filename << ".csv";
+    ofstream fpcsv(csvfilename.str());
     ofstream fpout(txtfilename.str());
+    ofstream fpresult("result.csv");
     string name;
 
     for (size_t i = 0; i < element.size(); i++) {
@@ -31,8 +33,9 @@ void file_out(string &filename, vector<ele_unit> &element) {
         }
         out_csv.clear();
         out_csv.str("");
-        out_csv << setw(5) << name << "," << setw(6) << setprecision(3) << element[i].margin_L << "," << setw(6) << setprecision(3) << element[i].margin_H;
+        out_csv << setw(5) << name << "," << setw(6) << setprecision(4) << element[i].margin_L << "," << setw(6) << setprecision(4) << element[i].margin_H;
         fpcsv << out_csv.str() << endl;
+        fpresult << out_csv.str() << endl;
     }
 
     for (size_t i = 0; i < element.size(); i++) {

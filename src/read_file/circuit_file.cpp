@@ -69,8 +69,13 @@ void make_data_cir(vector<string> &data_cir, string &filename, vector<ele_unit> 
                     else if(line.find("*Bc") != string::npos || line.find("*BC") != string::npos){
                         element[element.size() - 1].shunt_det = 1; //shunt_detの値を1(Bcでシャント抵抗計算)に変更
                     }
-                    flg_shunt_B = 0;
+                    else if(line.find("*calc") != string::npos || line.find("*Calc") != string::npos || line.find("*CALC") != string::npos){//シャント抵抗を対象に追加する
+                        element[element.size() - 1].shunt_det = 2; //shunt_detの値を2(シャント抵抗を対象に追加)に変更
+                        element.push_back({0, line_num, name, node1, node2, triple_digits(value), unit,0, 0, range.LMIN, range.LMAX, 0, 0, 0, 0, ""});
+                    }
+                    //flg_shunt_B = 0;
                 }
+                flg_shunt_B = 0;
             }
 
             if(line.find("*MIN") == 0){
@@ -89,7 +94,7 @@ void make_data_cir(vector<string> &data_cir, string &filename, vector<ele_unit> 
                 liness >> ignore >> ignore >>  MAX;
                 (element.back()).MAX = MAX;
             }
-            else if(line.find("*FIX") == 0){
+            else if(line.find("*FIX") == 0){ 
                 (element.back()).FIX = 1;
             }
             else if(line.find("*SYN") == 0){

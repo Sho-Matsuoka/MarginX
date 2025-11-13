@@ -33,7 +33,7 @@ struct ele_unit{
     double MAX;
     int FIX;  //1なら値をばらつかせない
     int SYN;
-    int shunt_det= -1;   //Bc => 1,  IcRs => 0  unshunt => -1  //shunt_det
+    int shunt_det= -1;   //Bc => 1,  IcRs => 0  unshunt => -1  push_to_element => 2  //shunt_det 
     double shunt_cal;   //shunt no keisanyou IcRs and Bc    shunt_cal
     std::string jjmod; //jjmod
 };

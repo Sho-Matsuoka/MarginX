@@ -53,5 +53,7 @@ plt.show()
     fprintf(pipe, "%s", pycode);
     pclose(pipe);
 
+    system("rm -rf result.csv");
+
     return 0;
 }

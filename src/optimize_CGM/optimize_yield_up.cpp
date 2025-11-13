@@ -36,7 +36,7 @@ void optimize_yield_up(vector<ele_unit> &element, vector<string> &data_cir, vect
     string sharp = "";
     string yield = "yield.csv";
     string param = "param.csv";
-    ofstream fp_yield(yield);
+    //ofstream fp_yield(yield);
     ofstream fp_param(param);
     vector<int> yield_his;
     yield_his.resize(5,0);
@@ -131,7 +131,7 @@ void optimize_yield_up(vector<ele_unit> &element, vector<string> &data_cir, vect
         cout << "\x1B[1A";    //カーソルを１行上に移動させる
 
         
-        fp_yield << m + 1 << ", " << opt->success << ", " << local_nd << ", " << element[13].value << endl;
+        //fp_yield << m + 1 << ", " << opt->success << ", " << local_nd << ", " << element[13].value << endl;
         //yield_log.push_back(opt->success);
 
         not_upd++;   //歩留まりが向上しなかったら、opt_num を+1する
@@ -250,7 +250,7 @@ void optimize_yield_up(vector<ele_unit> &element, vector<string> &data_cir, vect
         cout << "can't delete shared memory" << endl;
         exit(EXIT_FAILURE);
     }
-    fp_yield.close();        
+    //fp_yield.close();        
 
 }
 
